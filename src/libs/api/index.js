@@ -8,7 +8,7 @@ const call = (url) => {
 	});
 }
 
-export const getPokemons = async(step = 20, skip = 0) => {
+export const getPokemons = async(step = 200, skip = 0) => {
 	const url = `${baseUrl}pokemon/?limite=${step}&offset=${skip}`;
 	return await call(url);
 };
