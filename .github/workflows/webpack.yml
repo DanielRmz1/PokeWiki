@@ -1,0 +1,28 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "poke-api-challenge" ]
+  pull_request:
+    branches: [ "poke-api-challenge" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+
+    - name: Install
+      run: npm i
+
+    - name: Build
+      run: |
+        webpack --mode production
+    - name: Deploy to GH Page
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+        branch: gh-pages
+        folder: dist
